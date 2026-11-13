@@ -1,0 +1,53 @@
+﻿name: Build DSNA Android APK & Deploy Web
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-android-and-web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Java JDK 17 for Android
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 17
+
+      - name: Install Capacitor & Generate Android Project
+        run: |
+          npm install
+          npx cap add android
+          npx cap sync android
+
+      - name: Build Debug APK via Gradle
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload Ready APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DSNA-Lead-Harvester-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Deploy Web App to GitHub Pages (24/7 Online)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./www
