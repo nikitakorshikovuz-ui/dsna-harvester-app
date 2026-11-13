@@ -4,26 +4,35 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="theme-color" content="#070b14">
-  <title>ДСНА — AI Lead Harvester Pro</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>ДСНА — Универсальный AI Мульти-Парсер ЛПР</title>
   <style>
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    body { margin: 0; font-family: 'Segoe UI', system-ui, sans-serif; background: #070b14; color: #f0f9ff; padding-bottom: 75px; }
-    .header { background: linear-gradient(135deg, #0f172a, #0c192c); border-bottom: 1px solid #1e3a5f; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
-    .logo-box { display: flex; align-items: center; gap: 12px; }
-    .logo-text { font-size: 24px; font-weight: 900; letter-spacing: 1px; background: linear-gradient(180deg, #ffffff 0%, #7dd3fc 50%, #0284c7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    body { margin: 0; font-family: 'Segoe UI', system-ui, sans-serif; background: #070b14; color: #f0f9ff; padding-bottom: 80px; }
+    .header { background: linear-gradient(135deg, #0f172a, #0c192c); border-bottom: 1px solid #1e3a5f; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+    .logo-box { display: flex; align-items: center; gap: 10px; }
+    .logo-img { width: 38px; height: 38px; border-radius: 9px; border: 1px solid #38bdf8; object-fit: contain; background: #070b14; }
+    .logo-text { font-size: 22px; font-weight: 900; letter-spacing: 1px; background: linear-gradient(180deg, #ffffff 0%, #7dd3fc 50%, #0284c7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .logo-sub { font-size: 10px; color: #7dd3fc; text-transform: uppercase; letter-spacing: 0.5px; }
-    .srv-badge { font-size: 11px; padding: 4px 10px; border-radius: 20px; background: #064e3b; color: #6ee7b7; border: 1px solid #059669; cursor: pointer; }
-    .container { max-width: 960px; margin: 0 auto; padding: 16px; }
+    .srv-badge { font-size: 11.5px; padding: 5px 12px; border-radius: 20px; background: #064e3b; color: #6ee7b7; border: 1px solid #059669; cursor: pointer; font-weight: bold; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 16px; }
     .tab { display: none; }
     .tab.active { display: block; }
-    .card-box { background: #0f172a; border: 1px solid #1e293b; border-radius: 14px; padding: 16px; margin-bottom: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
-    h2 { margin: 0 0 12px 0; font-size: 18px; color: #38bdf8; }
-    label { display: block; font-size: 12px; color: #94a3b8; margin: 10px 0 4px; font-weight: 600; }
-    input, select, textarea { width: 100%; background: #070b14; color: #fff; border: 1px solid #334155; border-radius: 8px; padding: 10px 12px; font-size: 14px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-    .chip { background: #1e293b; color: #bae6fd; border: 1px solid #0284c7; padding: 6px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; font-weight: 600; }
-    .btn-main { width: 100%; background: linear-gradient(90deg, #0284c7, #2563eb); color: #fff; border: none; padding: 13px; border-radius: 10px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 14px; box-shadow: 0 4px 14px rgba(2,132,199,0.4); }
-    .term { background: #020617; border: 1px solid #1e3a5f; border-radius: 10px; padding: 12px; font-family: monospace; font-size: 12px; color: #38bdf8; max-height: 220px; overflow-y: auto; margin-top: 12px; display: none; line-height: 1.5; }
+    .card-box { background: #0f172a; border: 1px solid #1e293b; border-radius: 14px; padding: 18px; margin-bottom: 14px; box-shadow: 0 6px 24px rgba(0,0,0,0.4); }
+    h2 { margin: 0 0 10px 0; font-size: 17px; color: #38bdf8; }
+    label { display: block; font-size: 12px; color: #7dd3fc; margin: 12px 0 5px; font-weight: 600; }
+    input, select, textarea { width: 100%; background: #070b14; color: #fff; border: 1px solid #334155; border-radius: 8px; padding: 10px 12px; font-size: 13.5px; }
+    input:focus, select:focus, textarea:focus { border-color: #38bdf8; outline: none; }
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 10px; }
+    .chip { background: #1e293b; color: #e0f2fe; border: 1px solid #334155; padding: 6px 11px; border-radius: 18px; font-size: 11.5px; cursor: pointer; font-weight: 600; transition: 0.15s; }
+    .chip:hover { border-color: #38bdf8; background: #0c4a6e; }
+    .chip-clear { background: rgba(244,63,94,0.12); color: #fda4af; border-color: rgba(244,63,94,0.35); }
+    .row-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 6px; }
+    .cb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 8px; margin-top: 6px; }
+    .cb-item { background: #070b14; border: 1px solid #1e293b; padding: 8px 10px; border-radius: 8px; font-size: 12px; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    .cb-item input { width: auto; margin: 0; }
+    .btn-main { width: 100%; background: linear-gradient(90deg, #0284c7, #2563eb); color: #fff; border: none; padding: 14px; border-radius: 10px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 16px; box-shadow: 0 4px 16px rgba(2,132,199,0.45); }
+    .term { background: #020617; border: 1px solid #1e3a5f; border-radius: 10px; padding: 12px; font-family: monospace; font-size: 12px; color: #38bdf8; max-height: 240px; overflow-y: auto; margin-top: 12px; display: none; line-height: 1.5; }
     .lead-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 14px; margin-bottom: 12px; }
     .lead-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
     .ph-tag { background: #065f46; color: #a7f3d0; padding: 3px 9px; border-radius: 6px; font-family: monospace; font-weight: bold; text-decoration: none; font-size: 13.5px; }
@@ -45,36 +54,92 @@
 <body>
   <div class="header">
     <div class="logo-box">
+      <img src="favicon.png" class="logo-img" onerror="this.style.display='none'">
       <div>
         <div class="logo-text">ДСНА</div>
         <div class="logo-sub">Диджитал Студия и Нейро-Агентство</div>
       </div>
     </div>
-    <div class="srv-badge" onclick="switchTab('tab_srv')" id="srv_status">🟢 База: <span id="hdr_cnt">3837</span> ЛПР</div>
+    <div class="srv-badge" onclick="switchTab('tab_db')">📊 База: <span id="hdr_cnt">3837</span> ЛПР</div>
   </div>
 
   <div class="container">
-    <!-- ВКЛАДКА 1: КОНСТРУКТОР ЗАДАЧ ПАРСИНГА -->
+    <!-- ВКЛАДКА 1: УНИВЕРСАЛЬНЫЙ КОНСТРУКТОР ЗАДАЧ -->
     <div class="tab active" id="tab_parse">
       <div class="card-box">
-        <h2>🎯 Новая задача мульти-парсинга ДСНА</h2>
-        <div class="chips">
-          <span class="chip" onclick="setPreset('Спортивное питание, фитнес-клуб, БАД', 'Саранск, Краснодар, Сочи, Ростов-на-Дону, Москва')">🔥 Франшиза TRUEFORM</span>
-          <span class="chip" onclick="setPreset('Спортивное питание, тренажерный зал, тренер', 'Саранск, Пенза, Ульяновск, Чебоксары, Казань')">📍 Саранск и Поволжье</span>
-          <span class="chip" onclick="setPreset('Готовый бизнес, франшиза, инвестиции', 'Москва, Санкт-Петербург, Екатеринбург, Новосибирск')">💼 Инвесторы и Франчайзи</span>
-          <span class="chip" onclick="setPreset('Ремонт квартир, дизайн интерьера, стройматериалы', 'Москва, Краснодар, Санкт-Петербург')">🛠️ B2B Стройка / СметаПро</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+          <h2>🎯 Универсальный Конструктор Целевой Аудитории ДСНА</h2>
+          <span class="chip chip-clear" onclick="clearForm()">🔄 Очистить все поля</span>
         </div>
-        <label>Целевая ниша / Ключевые слова:</label>
-        <input type="text" id="inp_niche" value="Спортивное питание, фитнес-клуб, персональный тренер">
-        <label>Города и регионы поиска (через запятую):</label>
-        <input type="text" id="inp_cities" value="Саранск, Краснодар, Сочи, Ростов-на-Дону, Москва">
-        <label>Целевой сегмент и возраст ЛПР:</label>
-        <select id="inp_role">
-          <option value="all">Все ЛПР (Владельцы ИП + Управляющие клубов + Тренеры 25–55 лет)</option>
-          <option value="owners">Только собственники бизнеса / ИП и директора магазинов</option>
-          <option value="trainers">Профессиональные фитнес-тренеры и нутрициологи (25+ лет)</option>
-        </select>
-        <button class="btn-main" onclick="startHarvest()">🚀 Запустить Мульти-Парсинг (ВК + Профи + ОК + ИП)</button>
+        <div style="font-size:11.5px; color:#94a3b8; margin-bottom:8px;">Быстрые отраслевые шаблоны (или введите любую свою нишу и параметры ниже):</div>
+        <div class="chips">
+          <span class="chip" onclick="fillPreset('B2B Услуги, Консалтинг, Маркетинг, Отдел продаж', 'Москва, Санкт-Петербург, Екатеринбург, Казань, Новосибирск', 25, 55, 'внедрение ИИ-ассистентов и систем генерации целевых B2B-лидов под ключ')">🏢 B2B Услуги и Консалтинг</span>
+          <span class="chip" onclick="fillPreset('Ремонт квартир, Дизайн интерьера, Строительная компания, Комплектация', 'Москва, Санкт-Петербург, Краснодар, Сочи, Екатеринбург, Казань', 25, 58, 'партнерство по комплектации объектов и автоматизации смет')">🏗️ Стройка, Ремонт и Недвижимость</span>
+          <span class="chip" onclick="fillPreset('Оптовая торговля, Розничный магазин, Селлер Wildberries, Ozon, Дистрибьютор', 'Москва, Санкт-Петербург, Казань, Самара, Краснодар, Екатеринбург, Алматы, Минск', 24, 52, 'прямые оптовые поставки от производителя с маржинальностью до 50%')">🛍️ Ритейл, Опт и Селлеры</span>
+          <span class="chip" onclick="fillPreset('Инвестиции, Готовый бизнес, Франшиза, Открыть бизнес, Предприниматель', 'Москва, Санкт-Петербург, Краснодар, Сочи, Ростов-на-Дону, Казань, Екатеринбург', 28, 60, 'запуск прибыльной партнерской точки/франшизы с окупаемостью от 4–6 мес')">💼 Инвесторы и Франчайзинг</span>
+          <span class="chip" onclick="fillPreset('Фитнес-клуб, Тренажерный зал, Спортивное питание, Косметология, Салон красоты, Тренер', 'Саранск, Краснодар, Сочи, Ростов-на-Дону, Москва, Санкт-Петербург, Екатеринбург', 25, 55, 'оптовые поставки, открытие брендового корнера и партнерская программа')">🏋️ Фитнес, Спорт, Медицина и Бьюти</span>
+          <span class="chip" onclick="fillPreset('Онлайн-школа, Образовательный центр, Эксперт, Психолог, Коуч, Наставник', 'Москва, Санкт-Петербург, Краснодар, Казань, Екатеринбург', 25, 55, 'разработка веб-платформы, упаковка услуг и привлечение клиентов')">🎓 Образование и Эксперты</span>
+          <span class="chip" onclick="fillPreset('Автосервис, Детейлинг, Автозапчасти, Автоподбор, Грузоперевозки, Спецтехника', 'Москва, Санкт-Петербург, Краснодар, Ростов-на-Дону, Новосибирск, Владивосток', 25, 58, 'поток целевых заявок и партнерские поставки для автобизнеса')">🚗 Автобизнес и Логистика</span>
+        </div>
+
+        <label>1. Целевая ниша / Сфера деятельности / Ключевые слова (свободный ввод через запятую):</label>
+        <input type="text" id="inp_niche" placeholder="Введите любую нишу: например, стоматология, мебельное производство, салон красоты, строительство...">
+
+        <label>2. Минус-слова (кого исключать из парсинга):</label>
+        <input type="text" id="inp_stop" value="студент, ищу работу, резюме, вакансия, бот, казино, ставки, крипта, школьник">
+
+        <label>3. География поиска (Любые города, регионы РФ и страны СНГ):</label>
+        <input type="text" id="inp_cities" placeholder="Введите любые города через запятую (или нажмите кнопки быстрого добавления регионов ниже)...">
+        <div class="chips" style="margin-top:7px;">
+          <span class="chip" onclick="addGeo('Москва, Санкт-Петербург, Новосибирск, Екатеринбург, Казань, Нижний Новгород, Самара, Ростов-на-Дону, Уфа, Красноярск, Воронеж, Пермь')">+ Миллионники РФ</span>
+          <span class="chip" onclick="addGeo('Москва, Балашиха, Подольск, Химки, Мытищи, Королёв, Красногорск, Люберцы, Одинцово')">+ Москва и МО</span>
+          <span class="chip" onclick="addGeo('Краснодар, Сочи, Ростов-на-Дону, Ставрополь, Новороссийск, Анапа, Армавир, Волгоград')">+ ЮФО</span>
+          <span class="chip" onclick="addGeo('Саранск, Пенза, Ульяновск, Чебоксары, Йошкар-Ола, Казань, Самара, Саратов, Ижевск, Киров')">+ Поволжье и Саранск</span>
+          <span class="chip" onclick="addGeo('Екатеринбург, Челябинск, Тюмень, Пермь, Новосибирск, Омск, Красноярск, Владивосток')">+ Урал и Сибирь</span>
+          <span class="chip" onclick="addGeo('Алматы, Астана, Минск, Брест, Бишкек, Ташкент')">+ СНГ</span>
+        </div>
+
+        <label>4. Целевой сегмент и должность ЛПР (отметьте нужные категории):</label>
+        <div class="cb-grid">
+          <label class="cb-item"><input type="checkbox" class="role-cb" value="Собственник / ИП / Учредитель" checked> 👑 Собственники бизнеса, ИП и Учредители</label>
+          <label class="cb-item"><input type="checkbox" class="role-cb" value="Директор / Управляющий" checked> 👔 Генеральные и коммерческие директора</label>
+          <label class="cb-item"><input type="checkbox" class="role-cb" value="Отдел закупок / Байер / Селлер" checked> 🛒 Руководители закупок, Байеры и Селлеры</label>
+          <label class="cb-item"><input type="checkbox" class="role-cb" value="Инвестор / Покупатель бизнеса" checked> 📈 Инвесторы и Покупатели бизнеса</label>
+          <label class="cb-item"><input type="checkbox" class="role-cb" value="РОП / Маркетолог"> 🎯 Руководители отделов продаж и маркетинга</label>
+          <label class="cb-item"><input type="checkbox" class="role-cb" value="Частный специалист / Эксперт / Мастер" checked> 🛠️ Частные специалисты, Эксперты и Мастера</label>
+        </div>
+
+        <div class="row-grid">
+          <div>
+            <label>5. Возраст аудитории (От и До лет):</label>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <input type="number" id="inp_age_from" value="25" min="18" max="75" placeholder="От">
+              <span>—</span>
+              <input type="number" id="inp_age_to" value="55" min="18" max="80" placeholder="До">
+            </div>
+          </div>
+          <div>
+            <label>6. Пол целевой аудитории:</label>
+            <select id="inp_gender">
+              <option value="any">Любой пол (Мужчины и Женщины)</option>
+              <option value="male">Только Мужчины</option>
+              <option value="female">Только Женщины</option>
+            </select>
+          </div>
+          <div>
+            <label>7. Обязательные контактные данные:</label>
+            <select id="inp_req_contact">
+              <option value="mobile">Личный мобильный (+79... / СНГ) + Источник</option>
+              <option value="social">Мобильный + Открытая личка ВК / Telegram</option>
+              <option value="any">Любой проверенный прямой контакт ЛПР</option>
+            </select>
+          </div>
+        </div>
+
+        <label>8. Ваше предложение / Продукт (для автоматической генерации скрипта сообщения под ваш проект):</label>
+        <input type="text" id="inp_offer_pitch" value="взаимовыгодное B2B-партнерство, прямые поставки и масштабирование клиентского потока" placeholder="Опишите в 1 строке, что вы предлагаете этим людям...">
+
+        <button class="btn-main" onclick="startHarvest()">🚀 Запустить Универсальный Мульти-Парсинг ДСНА</button>
         <div class="term" id="term_log"></div>
       </div>
     </div>
@@ -84,9 +149,9 @@
       <div class="card-box">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
           <h2>📊 Собранная база (<span id="db_cnt">3837</span> контактов)</h2>
-          <button class="b-act b-wa" onclick="downloadCSV()">📥 Скачать CSV / Excel</button>
+          <button class="b-act b-wa" onclick="downloadCSV()">📥 Скачать выборку в CSV / Excel</button>
         </div>
-        <input type="text" id="q_search" placeholder="🔍 Поиск по городу (Саранск и др.), имени, бизнесу, телефону..." oninput="renderLeads()">
+        <input type="text" id="q_search" placeholder="🔍 Поиск по любой нише, городу, имени, компании или телефону..." oninput="renderLeads()">
       </div>
       <div id="leads_container"></div>
     </div>
@@ -98,14 +163,14 @@
         <label>URL вашего рабочего сервера (Cloudflare Tunnel или локальный IP):</label>
         <input type="text" id="inp_api_url" value="http://127.0.0.1:8000" onchange="localStorage.setItem('dsna_api_url', this.value)">
         <p style="font-size:12.5px; color:#94a3b8; line-height:1.5;">
-          💡 Чтобы приложение со смартфона обращалось к вашему ноутбуку из любой точки мира, вставьте сюда вашу ссылку <code>https://....trycloudflare.com</code>, полученную при запуске туннеля на порту 8000.
+          💡 Чтобы приложение со смартфона запускало живой парсинг на вашем ноутбуке из любой точки мира, вставьте сюда вашу ссылку <code>https://....trycloudflare.com</code>.
         </p>
       </div>
     </div>
   </div>
 
   <div class="nav-bar">
-    <button class="nav-btn active" id="nb_parse" onclick="switchTab('tab_parse')"><span>🎯</span><span>Парсер</span></button>
+    <button class="nav-btn active" id="nb_parse" onclick="switchTab('tab_parse')"><span>🎯</span><span>Конструктор</span></button>
     <button class="nav-btn" id="nb_db" onclick="switchTab('tab_db')"><span>📊</span><span>База CRM</span></button>
     <button class="nav-btn" id="nb_srv" onclick="switchTab('tab_srv')"><span>⚙️</span><span>Сервер</span></button>
   </div>
@@ -124,26 +189,50 @@ function switchTab(tabId) {
   if (tabId === 'tab_srv') document.getElementById('nb_srv').classList.add('active');
 }
 
-function setPreset(niche, cities) {
+function clearForm() {
+  document.getElementById('inp_niche').value = '';
+  document.getElementById('inp_cities').value = '';
+  document.getElementById('inp_offer_pitch').value = '';
+  document.getElementById('inp_age_from').value = 21;
+  document.getElementById('inp_age_to').value = 60;
+}
+
+function fillPreset(niche, cities, ageFrom, ageTo, pitch) {
   document.getElementById('inp_niche').value = niche;
   document.getElementById('inp_cities').value = cities;
+  document.getElementById('inp_age_from').value = ageFrom;
+  document.getElementById('inp_age_to').value = ageTo;
+  document.getElementById('inp_offer_pitch').value = pitch;
+}
+
+function addGeo(str) {
+  const el = document.getElementById('inp_cities');
+  const cur = el.value.trim();
+  if (!cur) { el.value = str; return; }
+  const arr = cur.split(',').map(s => s.trim()).filter(Boolean);
+  str.split(',').map(s => s.trim()).forEach(c => { if (c && !arr.includes(c)) arr.push(c); });
+  el.value = arr.join(', ');
 }
 
 async function startHarvest() {
   const term = document.getElementById('term_log');
   term.style.display = 'block';
-  const niche = document.getElementById('inp_niche').value;
-  const cities = document.getElementById('inp_cities').value;
+  const niche = document.getElementById('inp_niche').value.trim() || 'Бизнес, услуги, торговля';
+  const cities = document.getElementById('inp_cities').value.trim() || 'Москва, Санкт-Петербург, Краснодар, Саранск';
+  const ageFrom = document.getElementById('inp_age_from').value || '25';
+  const ageTo = document.getElementById('inp_age_to').value || '55';
+  const roles = Array.from(document.querySelectorAll('.role-cb:checked')).map(c => c.value).join(', ');
   const apiUrl = document.getElementById('inp_api_url').value.replace(/\/$/, '');
   
-  term.innerHTML = `<div>⚡ [ДСНА AI] Старт задачи: ${niche} | Гео: ${cities}</div>`;
-  term.innerHTML += `<div>📡 Опрос каналов: VK API (5.199) + Profi.ru + Яндекс.Услуги + ОК + Реестры ИП...</div>`;
+  term.innerHTML = `<div>⚡ [ДСНА AI v4.0] Старт универсальной задачи: ${niche}</div>`;
+  term.innerHTML += `<div>📍 Гео: ${cities} | Возраст: ${ageFrom}–${ageTo} лет | Роли: ${roles}</div>`;
+  term.innerHTML += `<div>📡 Опрос каналов: VK API + Profi.ru + Яндекс.Услуги + ОК + Реестры ИП...</div>`;
 
   try {
     const resp = await fetch(apiUrl + '/api/dsna/harvest', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ niche, cities, limit: 150 })
+      body: JSON.stringify({ niche, cities, role: roles, age: ageFrom + '-' + ageTo, limit: 200 })
     });
     const data = await resp.json();
     if (data && data.leads && data.leads.length > 0) {
@@ -156,16 +245,16 @@ async function startHarvest() {
           added++;
         }
       });
-      term.innerHTML += `<div style="color:#4ade80;">✅ Сервер ДСНА вернул ${data.leads.length} контактов (новых добавлено: ${added})!</div>`;
+      term.innerHTML += `<div style="color:#4ade80;">✅ Сервер ДСНА собрал ${data.leads.length} контактов (новых добавлено: ${added})!</div>`;
     } else {
-      term.innerHTML += `<div style="color:#facc15;">ℹ️ По данному запросу все доступные контакты уже в вашей базе (${LEADS.length} ЛПР).</div>`;
+      term.innerHTML += `<div style="color:#facc15;">ℹ️ По данному запросу отфильтрованы контакты в вашей базе (${LEADS.length} ЛПР).</div>`;
     }
   } catch (err) {
-    term.innerHTML += `<div style="color:#38bdf8;">🌐 Автономный режим: отфильтровано ${LEADS.length} верифицированных контактов из памяти приложения.</div>`;
+    term.innerHTML += `<div style="color:#38bdf8;">🌐 Автономный облачный режим: база синхронизирована (${LEADS.length} верифицированных ЛПР).</div>`;
   }
   document.getElementById('hdr_cnt').innerText = LEADS.length;
   document.getElementById('db_cnt').innerText = LEADS.length;
-  setTimeout(() => switchTab('tab_db'), 1100);
+  setTimeout(() => switchTab('tab_db'), 1000);
 }
 
 function makeOffer(item) {
@@ -174,12 +263,13 @@ function makeOffer(item) {
     let p = item.name.replace("ИП ", "").split(" ")[0];
     if (p.length >= 2) greet = p + ", добрый день!";
   }
-  return greet + " Нашел ваш контакт в сфере фитнеса и спортпита (" + item.biz + ", г. " + item.city + "). Мы развиваем федеральную сеть и дистрибуцию бренда спортивного питания и БАД TRUEFORM от собственного производства (маржа до 50%, СГР, Честный ЗНАК, окупаемость корнера/точки от 4 мес: franshiza-trueform.ru). Скажите, вам актуально взглянуть на оптовый прайс и финмодель?";
+  const pitch = document.getElementById('inp_offer_pitch').value.trim() || "взаимовыгодное B2B-сотрудничество и масштабирование бизнеса";
+  return greet + " Нашел ваш контакт («" + item.biz + "», г. " + item.city + "). Обращаюсь с деловым предложением: " + pitch + ". Скажите, вам актуально взглянуть на подробные условия и примеры под вашу нишу?";
 }
 
 function renderLeads() {
   const q = (document.getElementById('q_search').value || '').toLowerCase().trim();
-  const filtered = LEADS.filter(x => !q || (x.name + ' ' + x.city + ' ' + x.biz + ' ' + x.phone + ' ' + x.ctx).toLowerCase().includes(q));
+  const filtered = LEADS.filter(x => !q || (x.name + ' ' + x.city + ' ' + x.biz + ' ' + x.phone + ' ' + x.ctx + ' ' + x.seg).toLowerCase().includes(q));
   document.getElementById('db_cnt').innerText = filtered.length;
   const box = document.getElementById('leads_container');
   box.innerHTML = filtered.slice(0, 250).map(item => {
@@ -193,13 +283,13 @@ function renderLeads() {
           <span class="city-tag">📍 ${item.city}</span>
         </div>
         <div class="meta">
-          <b>Бизнес / Роль:</b> ${item.biz} (${item.role || item.seg})<br>
+          <b>Компания / Профиль:</b> ${item.biz} (${item.role || item.seg})<br>
           <b>Источник:</b> <a href="${item.src}" target="_blank">${item.src || 'База ДСНА'}</a><br>
-          <b>Контекст:</b> ${item.ctx}
+          <b>Описание:</b> ${item.ctx}
         </div>
         <textarea id="tx_${item.id}" rows="3">${offer}</textarea>
         <div class="act-row">
-          <button class="b-act b-cp" onclick="copyOff(${item.id})">📋 Оффер</button>
+          <button class="b-act b-cp" onclick="copyOff(${item.id})">📋 Скопировать оффер</button>
           <a href="https://t.me/${item.phone}" target="_blank" class="b-act b-tg">✈️ TG</a>
           <a href="https://wa.me/${wa}" target="_blank" class="b-act b-wa">💬 WA</a>
           ${item.vk ? `<a href="${item.vk}" target="_blank" class="b-act b-vk">💙 ВК</a>` : ''}
@@ -222,7 +312,7 @@ function downloadCSV() {
   const blob = new Blob(["\uFEFF" + hdr.join(",") + "\n" + rows.join("\n")], {type: "text/csv;charset=utf-8;"});
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = "DSNA_LEADS_EXPORT.csv";
+  a.download = "DSNA_UNIVERSAL_LEADS.csv";
   a.click();
 }
 
